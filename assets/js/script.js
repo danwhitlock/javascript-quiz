@@ -1,4 +1,4 @@
-// Store questions in an array of objects
+// Store questions and answers in an array of objects
 
 let questions = [
     {
@@ -28,6 +28,27 @@ let questions = [
     },
 ]
 
+// Variable to track score
 let score = 0;
 
-let questionBox = 0;
+// Variables for HTML elements
+let questionBox = document.getElementById("questions");
+let questionTitle = document.getElementById("question-title");
+let answerChoices = document.getElementById("choices");
+let timerElement = document.getElementById("time");
+
+// console.log(questionBox);
+// console.log(questionTitle);
+// console.log(answerChoices);
+
+function countdown() {
+    timeLeft = 60;
+    var timeInterval = setInterval(function() {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+        if (timeLeft === 0) {
+            timerElement.textContent = "0";
+            clearInterval(timeInterval);
+        }
+    }, 1000)
+};
