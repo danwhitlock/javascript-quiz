@@ -28,7 +28,7 @@ let questions = [
     },
 ]
 
-// Variable to track score
+// Variable to hold the score
 let score = 0;
 
 // Variables for HTML elements
@@ -43,6 +43,7 @@ let timerElement = document.getElementById("time");
 // console.log(questionTitle);
 // console.log(answerChoices);
 
+// function to manage the countdown
 function countdown() {
     timeLeft = 60;
     var timeInterval = setInterval(function() {
@@ -55,7 +56,36 @@ function countdown() {
     }, 1000)
 };
 
+// hide start screen when start button is clicked and show a question
 startButton.addEventListener('click', function() {
     startScreen.setAttribute("class", "hide");
+    showQuestion();
     }
 );
+
+// function to show a question
+function showQuestion() {
+    // show the question box
+    questionBox.classList.remove("hide");
+    
+    // set the question to begin with
+    let currentQuestion = questions[0];
+
+    // populate the question text
+    questionTitle.textContent = currentQuestion.question;
+    for (let i = 0; i < currentQuestion.choices.length; i++) {
+        let choice = document.createElement("button");
+        answerChoices.append(choice);
+        choice.textContent = currentQuestion.choices[i];
+    }
+};
+
+// function to check if answer was correct and update score
+function checkAnswer() {
+
+}
+
+// function to end quiz if out of time or no more questions
+function endQuiz() {
+
+}
