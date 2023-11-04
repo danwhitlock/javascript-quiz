@@ -32,6 +32,8 @@ let questions = [
 let score = 0;
 
 // Variables for HTML elements
+let startScreen = document.getElementById("start-screen");
+let startButton = document.getElementById("start");
 let questionBox = document.getElementById("questions");
 let questionTitle = document.getElementById("question-title");
 let answerChoices = document.getElementById("choices");
@@ -52,3 +54,8 @@ function countdown() {
         }
     }, 1000)
 };
+
+startButton.addEventListener('click', function() {
+    startScreen.setAttribute("class", "hide");
+    }
+);
