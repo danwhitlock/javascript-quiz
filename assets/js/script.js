@@ -69,23 +69,22 @@ startButton.addEventListener("click", function() {
     }
 );
 
-// function to show a question
+// function to show the questions
 function showQuestion() {
-    // show the question box
-    let currentQuestion = 
+    // determine the current question
+    let question = questions[currentQuestion];
     
-    // set the question to begin with
-    let currentQuestion = questions[0];
+    // update the question title
+    questionTitle.textContent = question.question;
 
-    // populate the question text
-    questionTitle.textContent = currentQuestion.question;
-    for (let i = 0; i < currentQuestion.choices.length; i++) {
+    // create the answer choices
+    for (let i = 0; i < question.choices.length; i++) {
         let choice = document.createElement("button");
-        answerChoices.append(choice);
-        choice.textContent = currentQuestion.choices[i];
+        choice.textContent = question.choices[i];
         choice.addEventListener("click", function() {
-            checkAnswer();
-        })
+            checkAnswer(question.choices[i]);
+        });
+        answerChoices.appendChild(choice);
     }
 };
 
