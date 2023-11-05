@@ -70,7 +70,7 @@ startButton.addEventListener("click", function() {
     }
 );
 
-// function to show the questions
+// function to show the first question
 function firstQuestion() {
     questionBox.classList.remove("hide");
     questionTitle.textContent = questionsArray[0].question;
@@ -83,10 +83,9 @@ function firstQuestion() {
             checkAnswerOne(chosenAnswer, questionsArray[0].answer);
         })
     }
-
 };
 
-// function to check if answer was correct and update score
+// function to check the first answer
 function checkAnswerOne(chosenAnswer, answer) {
     if (chosenAnswer !== answer) {
         timeLeft -=10;
@@ -100,7 +99,123 @@ function checkAnswerOne(chosenAnswer, answer) {
     }
 }
 
+// function to show the second question
+function secondQuestion() {
+    choices.innerHTML = "";
+    questionTitle.textContent = questionsArray[1].question;
+    for (let i = 0; i < questionsArray[1].choices.length; i++) {
+        let choice = document.createElement("button");
+        choices.append(choice);
+        choice.textContent = questionsArray[1].choices[i];
+        choice.addEventListener("click", function(event) {
+            let chosenAnswer = event.target.textContent;
+            checkAnswerTwo(chosenAnswer, questionsArray[1].answer);
+        })
+    }
+};
+
+// function to check the second answer
+function checkAnswerTwo(chosenAnswer, answer) {
+    if (chosenAnswer !== answer) {
+        timeLeft -=10;
+        thirdQuestion();
+        answerFeedback.classList.remove("hide");
+        answerFeedback.textContent = "Incorrect"
+    } else {
+        thirdQuestion();
+        answerFeedback.classList.remove("hide");
+        answerFeedback.textContent = "Correct!"
+    }
+}
+
+// function to show the third question
+function thirdQuestion() {
+    choices.innerHTML = "";
+    questionTitle.textContent = questionsArray[2].question;
+    for (let i = 0; i < questionsArray[2].choices.length; i++) {
+        let choice = document.createElement("button");
+        choices.append(choice);
+        choice.textContent = questionsArray[2].choices[i];
+        choice.addEventListener("click", function(event) {
+            let chosenAnswer = event.target.textContent;
+            checkAnswerThree(chosenAnswer, questionsArray[2].answer);
+        })
+    }
+};
+
+// function to check the third answer
+function checkAnswerThree(chosenAnswer, answer) {
+    if (chosenAnswer !== answer) {
+        timeLeft -=10;
+        fourthQuestion();
+        answerFeedback.classList.remove("hide");
+        answerFeedback.textContent = "Incorrect"
+    } else {
+        fourthQuestion();
+        answerFeedback.classList.remove("hide");
+        answerFeedback.textContent = "Correct!"
+    }
+}
+
+// function to show the fourth question
+function fourthQuestion() {
+    choices.innerHTML = "";
+    questionTitle.textContent = questionsArray[3].question;
+    for (let i = 0; i < questionsArray[3].choices.length; i++) {
+        let choice = document.createElement("button");
+        choices.append(choice);
+        choice.textContent = questionsArray[3].choices[i];
+        choice.addEventListener("click", function(event) {
+            let chosenAnswer = event.target.textContent;
+            checkAnswerFour(chosenAnswer, questionsArray[3].answer);
+        })
+    }
+};
+
+// function to check the fourth answer
+function checkAnswerFour(chosenAnswer, answer) {
+    if (chosenAnswer !== answer) {
+        timeLeft -=10;
+        fifthQuestion();
+        answerFeedback.classList.remove("hide");
+        answerFeedback.textContent = "Incorrect"
+    } else {
+        fifthQuestion();
+        answerFeedback.classList.remove("hide");
+        answerFeedback.textContent = "Correct!"
+    }
+}
+
+// function to show the fifth question
+function fifthQuestion() {
+    choices.innerHTML = "";
+    questionTitle.textContent = questionsArray[4].question;
+    for (let i = 0; i < questionsArray[4].choices.length; i++) {
+        let choice = document.createElement("button");
+        choices.append(choice);
+        choice.textContent = questionsArray[4].choices[i];
+        choice.addEventListener("click", function(event) {
+            let chosenAnswer = event.target.textContent;
+            checkAnswerFive(chosenAnswer, questionsArray[4].answer);
+        })
+    }
+};
+
+// function to check the fifth answer
+function checkAnswerFive(chosenAnswer, answer) {
+    if (chosenAnswer !== answer) {
+        timeLeft -=10;
+        endQuiz();
+        answerFeedback.classList.remove("hide");
+        answerFeedback.textContent = "Incorrect"
+    } else {
+        endQuiz();
+        answerFeedback.classList.remove("hide");
+        answerFeedback.textContent = "Correct!"
+    }
+}
+
 // function to end quiz if out of time or no more questions
 function endQuiz() {
-
+    
 };
