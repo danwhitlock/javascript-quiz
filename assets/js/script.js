@@ -36,6 +36,8 @@ let questionTitle = document.getElementById("question-title");
 let answerChoices = document.getElementById("choices");
 let timerElement = document.getElementById("time");
 let answerFeedback = document.getElementById("feedback");
+let endScreen = document.getElementById("end-screen");
+let finalScore = document.getElementById("final-score");
 
 // variable to track the current question from the array of question objects
 let currentQuestion = 0;
@@ -57,6 +59,8 @@ function countdown() {
         timerElement.textContent = timeLeft;
         if (timeLeft <= 0) {
             clearInterval(timeInterval);
+            timerElement.textContent = 0;
+            timeLeft = 0;
             endQuiz();
         }
     }, 1000)
@@ -215,7 +219,9 @@ function checkAnswerFive(chosenAnswer, answer) {
     }
 }
 
-// function to end quiz if out of time or no more questions
+// function to end quiz and show results
 function endQuiz() {
-    
+    questionBox.classList.add("hide");
+    endScreen.classList.remove("hide");
+    finalScore.textContent = timeLeft;
 };
