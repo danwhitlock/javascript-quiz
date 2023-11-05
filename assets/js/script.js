@@ -1,6 +1,6 @@
 // Store questions and answers in an array of objects
 
-let questions = [
+let questionsArray = [
     {
         question: "Commonly used data types DO NOT include:",
         choices: ["strings", "booleans", "alerts", "numbers"],
@@ -64,41 +64,26 @@ function countdown() {
 // hide start screen when start button is clicked, show the first question and start the countdown
 startButton.addEventListener("click", function() {
     startScreen.classList.add("hide");
-    showQuestion();
+    firstQuestion();
     countdown();
     }
 );
 
 // function to show the questions
-function showQuestion() {
-    // determine the current question
-    let question = questions[currentQuestion];
-    
-    // update the question title
-    questionTitle.textContent = question.question;
-
-    // create the answer choices
-    for (let i = 0; i < question.choices.length; i++) {
+function firstQuestion() {
+    questionBox.classList.remove("hide");
+    questionTitle.textContent = questionsArray[0].question;
+    for (let i = 0; i < questionsArray[0].choices.length; i++) {
         let choice = document.createElement("button");
-        choice.textContent = question.choices[i];
-        choice.addEventListener("click", function() {
-            checkAnswer(question.choices[i]);
-        });
-        answerChoices.appendChild(choice);
+        choices.append(choice);
+        choice.textContent = questionsArray[0].choices[i];
     }
 };
 
 // function to check if answer was correct and update score
 function checkAnswer() {
-    if (choices[i] === answer) {
-        // tell user they were correct        
-        // move to next question
-    } else {
-        // tell user they were wrong
-        // take 10seconds off time
-        // move to next question
-    }
-};
+
+}
 
 // function to end quiz if out of time or no more questions
 function endQuiz() {
