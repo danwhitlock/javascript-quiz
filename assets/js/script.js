@@ -38,6 +38,7 @@ let timerElement = document.getElementById("time");
 let answerFeedback = document.getElementById("feedback");
 let endScreen = document.getElementById("end-screen");
 let finalScore = document.getElementById("final-score");
+let submitScore = document.getElementById("submit");
 
 // variable to track the current question from the array of question objects
 let currentQuestion = 0;
@@ -47,6 +48,9 @@ let score = 0;
 
 // variable to set the initial time remaining
 let timeLeft = 60;
+
+// variable to track whether the quiz has finished, to stop countdown
+let quizCompleted = false;
 
 // console.log(questionBox);
 // console.log(questionTitle);
@@ -62,6 +66,9 @@ function countdown() {
             timerElement.textContent = 0;
             timeLeft = 0;
             endQuiz();
+        } 
+        if (quizCompleted) {
+            clearInterval(timeInterval);
         }
     }, 1000)
 };
@@ -221,8 +228,17 @@ function checkAnswerFive(chosenAnswer, answer) {
 
 // function to end quiz and show results
 function endQuiz() {
+    quizCompleted = true;
     questionBox.classList.add("hide");
     endScreen.classList.remove("hide");
     finalScore.textContent = timeLeft;
-    timerElement.classList.add("hide");
 };
+
+submitScore.addEventListener("click", function(event) {
+    event.preventDefault();
+    let initials = document.getElementById("initials").value;
+    localStorage.setItem("initials", initials);
+    localStorage.setItem("highScore", finalScore.textContent);
+});
+
+// need to capture the high scores as objects and stringify/parse them in and out of local storage?
