@@ -224,4 +224,5 @@ function endQuiz() {
     questionBox.classList.add("hide");
     endScreen.classList.remove("hide");
     finalScore.textContent = timeLeft;
+    timerElement.classList.add("hide");
 };
