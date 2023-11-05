@@ -28,9 +28,6 @@ let questions = [
     },
 ]
 
-// Variable to hold the score
-let score = 0;
-
 // Variables for HTML elements
 let startScreen = document.getElementById("start-screen");
 let startButton = document.getElementById("start");
@@ -39,26 +36,34 @@ let questionTitle = document.getElementById("question-title");
 let answerChoices = document.getElementById("choices");
 let timerElement = document.getElementById("time");
 
+// variable to track the current question from the array of question objects
+let currentQuestion = 0;
+
+// Variable to hold the score
+let score = 0;
+
+// variable to set the initial time remaining
+let timeLeft = 60;
+
 // console.log(questionBox);
 // console.log(questionTitle);
 // console.log(answerChoices);
 
 // function to manage the countdown
 function countdown() {
-    timeLeft = 60;
     var timeInterval = setInterval(function() {
         timeLeft--;
         timerElement.textContent = timeLeft;
-        if (timeLeft === 0) {
-            timerElement.textContent = "0";
+        if (timeLeft <= 0) {
             clearInterval(timeInterval);
+            endQuiz();
         }
     }, 1000)
 };
 
-// hide start screen when start button is clicked and show a question
+// hide start screen when start button is clicked, show the first question and start the countdown
 startButton.addEventListener("click", function() {
-    startScreen.setAttribute("class", "hide");
+    startScreen.classList.add("hide");
     showQuestion();
     countdown();
     }
@@ -67,7 +72,7 @@ startButton.addEventListener("click", function() {
 // function to show a question
 function showQuestion() {
     // show the question box
-    questionBox.classList.remove("hide");
+    let currentQuestion = 
     
     // set the question to begin with
     let currentQuestion = questions[0];
