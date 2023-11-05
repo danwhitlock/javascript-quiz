@@ -35,6 +35,7 @@ let questionBox = document.getElementById("questions");
 let questionTitle = document.getElementById("question-title");
 let answerChoices = document.getElementById("choices");
 let timerElement = document.getElementById("time");
+let answerFeedback = document.getElementById("feedback");
 
 // variable to track the current question from the array of question objects
 let currentQuestion = 0;
@@ -77,12 +78,26 @@ function firstQuestion() {
         let choice = document.createElement("button");
         choices.append(choice);
         choice.textContent = questionsArray[0].choices[i];
+        choice.addEventListener("click", function(event) {
+            let chosenAnswer = event.target.textContent;
+            checkAnswerOne(chosenAnswer, questionsArray[0].answer);
+        })
     }
+
 };
 
 // function to check if answer was correct and update score
-function checkAnswer() {
-
+function checkAnswerOne(chosenAnswer, answer) {
+    if (chosenAnswer !== answer) {
+        timeLeft -=10;
+        secondQuestion();
+        answerFeedback.classList.remove("hide");
+        answerFeedback.textContent = "Incorrect"
+    } else {
+        secondQuestion();
+        answerFeedback.classList.remove("hide");
+        answerFeedback.textContent = "Correct!"
+    }
 }
 
 // function to end quiz if out of time or no more questions
