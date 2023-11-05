@@ -39,6 +39,7 @@ let answerFeedback = document.getElementById("feedback");
 let endScreen = document.getElementById("end-screen");
 let finalScore = document.getElementById("final-score");
 let submitScore = document.getElementById("submit");
+let scoresList = document.getElementById("highscores");
 
 // variable to track the current question from the array of question objects
 let currentQuestion = 0;
@@ -234,11 +235,21 @@ function endQuiz() {
     finalScore.textContent = timeLeft;
 };
 
+// store the initials and score in local storage
 submitScore.addEventListener("click", function(event) {
     event.preventDefault();
     let initials = document.getElementById("initials").value;
     localStorage.setItem("initials", initials);
     localStorage.setItem("highScore", finalScore.textContent);
+    window.open("highscores.html", "_self");
+    pushScores();
 });
 
-// need to capture the high scores as objects and stringify/parse them in and out of local storage?
+// push the new high score to the high score list
+function pushScores() {
+    let newScore = scoresList.createElement("li");
+    newScore.textContent = (localStorage.getItem("initials") + " " + localStorage.getItem("highscore"));
+    scoresList.appendChild(newScore);
+    console.log(newScore);
+};
+
