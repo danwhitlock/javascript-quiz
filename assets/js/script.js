@@ -57,9 +57,10 @@ function countdown() {
 };
 
 // hide start screen when start button is clicked and show a question
-startButton.addEventListener('click', function() {
+startButton.addEventListener("click", function() {
     startScreen.setAttribute("class", "hide");
     showQuestion();
+    countdown();
     }
 );
 
@@ -77,15 +78,25 @@ function showQuestion() {
         let choice = document.createElement("button");
         answerChoices.append(choice);
         choice.textContent = currentQuestion.choices[i];
+        choice.addEventListener("click", function() {
+            checkAnswer();
+        })
     }
 };
 
 // function to check if answer was correct and update score
 function checkAnswer() {
-
-}
+    if (choices[i] === answer) {
+        // tell user they were correct        
+        // move to next question
+    } else {
+        // tell user they were wrong
+        // take 10seconds off time
+        // move to next question
+    }
+};
 
 // function to end quiz if out of time or no more questions
 function endQuiz() {
 
-}
+};
