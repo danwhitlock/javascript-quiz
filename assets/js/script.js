@@ -234,18 +234,11 @@ function endQuiz() {
     finalScore.textContent = timeLeft;
 };
 
-// push the new high score to the high score list
-function pushScores() {
-    let newScore = scoresList.createElement("li");
-    console.log(newScore);
-    scoresList.appendChild(newScore);
-    newScore.textContent = (localStorage.getItem("initials") + " " + localStorage.getItem("highscore"));
-};
-
-// // store the initials and score in local storage
+// store the initials and score in local storage
 submitScore.addEventListener("click", function(event) {
     event.preventDefault();
     let initials = document.getElementById("initials").value;
     localStorage.setItem("initials", initials);
     localStorage.setItem("highscore", finalScore.textContent);
+    window.open("highscores.html", "_self");
 });
