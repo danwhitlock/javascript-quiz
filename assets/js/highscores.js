@@ -1,13 +1,13 @@
-let savedScores = JSON.parse(localStorage.getItem("highscores"));
+var savedScores = JSON.parse(localStorage.getItem("highscores"));
 // console.log(JSON.parse(localStorage.getItem("highscores")));
-let scoresList = document.getElementById("highscores");
-let clearScores = document.getElementById("clear");
+var scoresList = document.getElementById("highscores");
+var clearScores = document.getElementById("clear");
 
 // push the new high score to the high score list
 function renderScores() {
     
-    for (let i = 0; i < savedScores.length; i++) {
-        let newScoreRow = document.createElement("li");
+    for (var i = 0; i < savedScores.length; i++) {
+        var newScoreRow = document.createElement("li");
         scoresList.appendChild(newScoreRow);
         newScoreRow.textContent = savedScores[i].score + " " + savedScores[i].initials;
     }
