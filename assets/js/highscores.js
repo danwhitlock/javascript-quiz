@@ -14,6 +14,7 @@ function renderScores() {
 }
 renderScores();
 
+// clear high scores/local storage when clear button clicked
 clearScores.addEventListener("click", function() {
     savedScores = [];
     scoresList.textContent = "";

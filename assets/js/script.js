@@ -139,8 +139,9 @@ function checkAnswer() {
 };
 
 // display questions using individual functions
+
 /*
-function to show the first question
+// function to show the first question
 function firstQuestion() {
     questionBox.classList.remove("hide");
     questionTitle.textContent = questionsArray[0].question;
