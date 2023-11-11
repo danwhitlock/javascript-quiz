@@ -92,14 +92,12 @@ function showQuestions() {
     var currentQuestion = questionsArray[currentQuestionIndex];
     questionTitle.textContent = currentQuestion.question;
     answerChoices.innerHTML = "";
+
     currentQuestion.choices.forEach(function(choice, i) {
-        
-        console.log(choice);
-        
+        //console.log(choice);    
         var choiceButton = document.createElement("button");
         choiceButton.setAttribute("value", choice);
         choiceButton.textContent = i + 1 + "." + choice;
-        
         answerChoices.appendChild(choiceButton);
         choiceButton.onclick = checkAnswer;
     });
