@@ -1,15 +1,20 @@
-console.log(localStorage.getItem("initials") + " " + localStorage.getItem("highscore"));
-
+let savedScores = JSON.parse(localStorage.getItem("highscores"));
+// console.log(JSON.parse(localStorage.getItem("highscores")));
 let scoresList = document.getElementById("highscores");
-
-console.log(scoresList);
+let clearScores = document.getElementById("clear");
 
 // push the new high score to the high score list
 function renderScores() {
-    let newScore = document.createElement("li");
-    console.log(newScore);
-    scoresList.appendChild(newScore);
-    newScore.textContent = (localStorage.getItem("initials") + " " + localStorage.getItem("highscore"));
-};
-
+    for (let i = 0; i < savedScores.length; i++) {
+        let newScoreRow = document.createElement("li");
+        scoresList.appendChild(newScoreRow);
+        newScoreRow.textContent = savedScores[i].score + " " + savedScores[i].initials;
+    }
+}
 renderScores();
+
+clearScores.addEventListener("click", function() {
+    savedScores = [];
+    console.log(savedScores);
+    renderScores();
+});
